@@ -650,7 +650,7 @@ executed once when the buffer is created."
     (define-key map "\C-c\C-p" 'term-previous-prompt)
     (define-key map "\C-c\C-d" 'term-send-eof)
     (define-key map "\C-c\C-k" 'term-char-mode)
-    (define-key map "\C-c\C-j" 'term-line-mode)
+    (define-key map "\C-c\C-l" 'term-line-mode)
     (define-key map "\C-c\C-q" 'term-pager-toggle)
 
     ;;  ;; completion:
@@ -891,7 +891,7 @@ is buffer-local."
   (define-key term-raw-escape-map "\C-q" 'term-pager-toggle)
   ;; The keybinding for term-char-mode is needed by the menubar code.
   (define-key term-raw-escape-map "\C-k" 'term-char-mode)
-  (define-key term-raw-escape-map "\C-j" 'term-line-mode)
+  (define-key term-raw-escape-map "\C-l" 'term-line-mode)
   ;; It's convenient to have execute-extended-command here.
   (define-key term-raw-escape-map [?\M-x] 'execute-extended-command))
 
