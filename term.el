@@ -480,7 +480,7 @@ by moving term-home-marker.  It is set to t if there is a
 (defvar term-pager-old-local-map nil "Saves old keymap while paging.")
 (defvar term-pager-old-filter) ; Saved process-filter while paging.
 
-(defcustom explicit-shell-file-name nil
+(defcustom explicit-shell-file-name "/bin/zsh"
   "If non-nil, is file name to use for explicitly requested inferior shell."
   :type '(choice (const nil) file)
   :group 'term)
@@ -539,7 +539,7 @@ This variable is buffer-local, and is a good thing to set in mode hooks."
   :type 'boolean
   :group 'term)
 
-(defcustom term-scroll-to-bottom-on-output nil
+(defcustom term-scroll-to-bottom-on-output t
   "Controls whether interpreter output causes window to scroll.
 If nil, then do not scroll.  If t or `all', scroll all windows showing buffer.
 If `this', scroll only the selected window.
@@ -552,7 +552,7 @@ This variable is buffer-local."
   :type 'boolean
   :group 'term)
 
-(defcustom term-scroll-show-maximum-output nil
+(defcustom term-scroll-show-maximum-output t
   "Controls how interpreter output causes window to scroll.
 If non-nil, then show the maximum output when the window is scrolled.
 
