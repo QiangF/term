@@ -480,7 +480,7 @@ by moving term-home-marker.  It is set to t if there is a
 (defvar term-pager-old-local-map nil "Saves old keymap while paging.")
 (defvar term-pager-old-filter) ; Saved process-filter while paging.
 
-(defcustom explicit-shell-file-name "/bin/zsh"
+(defcustom explicit-shell-file-name "/bin/bash"
   "If non-nil, is file name to use for explicitly requested inferior shell."
   :type '(choice (const nil) file)
   :group 'term)
