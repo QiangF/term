@@ -645,7 +645,6 @@ executed once when the buffer is created."
     (define-key map "\C-c\C-o" 'term-kill-output)
     (define-key map "\C-c\C-r" 'term-show-output)
     (define-key map "\C-c\C-e" 'term-show-maximum-output)
-    (define-key map "\C-c\C-l" 'term-dynamic-list-input-ring)
     (define-key map "\C-c\C-n" 'term-next-prompt)
     (define-key map "\C-c\C-p" 'term-previous-prompt)
     (define-key map "\C-c\C-d" 'term-send-eof)
