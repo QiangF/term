@@ -408,6 +408,27 @@
   "General command interpreter in a window."
   :group 'processes)
 
+(defcustom term-remote-hosts '()
+  "List of remote hosts")
+
+(defun remote-term-do (new-buffer-name cmd &rest switches)
+  "Fires a remote terminal"
+  (setq term-ansi-buffer-name (concat "*" new-buffer-name "*"))
+  (setq term-ansi-buffer-name (generate-new-buffer-name term-ansi-buffer-name))
+  (setq term-ansi-buffer-name (apply 'term-ansi-make-term term-ansi-buffer-name cmd nil switches))
+  (set-buffer term-ansi-buffer-name)
+  (term-mode)
+  (term-char-mode)
+  (term-set-escape-char ?\C-x)
+  (switch-to-buffer term-ansi-buffer-name))
+
+(defun remote-term (host-name)
+  (interactive
+   (list (completing-read "Remote host: " term-remote-hosts)))
+  (dolist (known-host term-remote-hosts)
+    (when (equal (car known-host) host-name)
+      (apply 'remote-term-do known-host))))
+
 
 ;;; Buffer Local Variables:
 ;;============================================================================
