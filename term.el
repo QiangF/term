@@ -411,6 +411,21 @@
 (defcustom term-remote-hosts '()
   "List of remote hosts")
 
+;; parse ~/.ssh/config to provide `remote-term' completion
+;; capabilities
+(defcustom ssh-config-filename "~/.ssh/config"
+  "ssh config filename")
+(defun term-parse-ssh-config ()
+  (interactive)
+  (setq term-remote-hosts '())
+  (if (file-exists-p ssh-config-filename)
+    (with-temp-buffer
+      (find-file ssh-config-filename)
+      (while (re-search-forward "Host\\s-+\\([^\s]+\\)$" nil t)
+        (let ((host (match-string-no-properties 1)))
+          (add-to-list 'term-remote-hosts `(,host "ssh" ,host)))))))
+(term-parse-ssh-config)
+
 (defun remote-term-do (new-buffer-name cmd &rest switches)
   "Fires a remote terminal"
   (setq term-ansi-buffer-name (concat "*" new-buffer-name "*"))
